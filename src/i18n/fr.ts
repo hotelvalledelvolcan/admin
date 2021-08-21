@@ -211,6 +211,9 @@ const customFrenchMessages: TranslationMessages = {
                 rejected_error: 'Erreur: Commentaire non rejeté',
             },
         },
+        blog: {
+            name: 'Blog |||| Blog',
+        },
         segments: {
             name: 'Segment |||| Segments',
             fields: {

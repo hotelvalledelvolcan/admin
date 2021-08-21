@@ -15,7 +15,8 @@ import products from './products';
 import invoices from './invoices';
 import categories from './categories';
 import reviews from './reviews';
-import dataProviderFactory from './dataProvider';
+import blog from './blog';
+import dataProvider from './dataProvider';
 
 const i18nProvider = polyglotI18nProvider(locale => {
     if (locale === 'fr') {
@@ -30,9 +31,7 @@ const App = () => {
     return (
         <Admin
             title=""
-            dataProvider={dataProviderFactory(
-                process.env.REACT_APP_DATA_PROVIDER || ''
-            )}
+            dataProvider={new dataProvider()}
             customReducers={{ theme: themeReducer }}
             customRoutes={customRoutes}
             authProvider={authProvider}
@@ -52,6 +51,7 @@ const App = () => {
             <Resource name="products" {...products} />
             <Resource name="categories" {...categories} />
             <Resource name="reviews" {...reviews} />
+            <Resource name="blog" {...blog} />
         </Admin>
     );
 };

@@ -1,6 +1,6 @@
 import simpleRestProvider from 'ra-data-simple-rest';
 
-const restProvider = simpleRestProvider('http://localhost:4000');
+const restProvider = simpleRestProvider('https://localhost:44316/api/v1/hotelvalledelvolcan-module');
 
 const delayedDataProvider = new Proxy(restProvider, {
     get: (target, name, self) =>
@@ -18,4 +18,4 @@ const delayedDataProvider = new Proxy(restProvider, {
                   ),
 });
 
-export default delayedDataProvider;
+export default restProvider;

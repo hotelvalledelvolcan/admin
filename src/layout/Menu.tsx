@@ -16,6 +16,7 @@ import invoices from '../invoices';
 import products from '../products';
 import categories from '../categories';
 import reviews from '../reviews';
+import blog from '../blog';
 import SubMenu from './SubMenu';
 import { AppState } from '../types';
 
@@ -37,9 +38,8 @@ const Menu = ({ dense = false }: MenuProps) => {
 
     return (
         <div className={classes.root}>
-            {' '}
-            <DashboardMenuItem />
-            <SubMenu
+            {/* <DashboardMenuItem /> */}
+            {/* <SubMenu
                 handleToggle={() => handleToggle('menuSales')}
                 isOpen={state.menuSales}
                 name="pos.menu.sales"
@@ -117,6 +117,14 @@ const Menu = ({ dense = false }: MenuProps) => {
                     smart_count: 2,
                 })}
                 leftIcon={<reviews.icon />}
+                dense={dense}
+            /> */}
+            <MenuItemLink
+                to={`/blog`}
+                primaryText={translate(`resources.blog.name`, {
+                    smart_count: 2,
+                })}
+                leftIcon={<blog.icon />}
                 dense={dense}
             />
         </div>

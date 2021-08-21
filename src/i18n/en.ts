@@ -196,6 +196,9 @@ const customEnglishMessages: TranslationMessages = {
                 rejected_error: 'Error: Review not rejected',
             },
         },
+        blog: {
+            name: 'Blog |||| Blog',
+        },
         segments: {
             name: 'Segment |||| Segments',
             fields: {

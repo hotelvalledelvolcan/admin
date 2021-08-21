@@ -31,6 +31,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const InvoiceList: FC<ListProps> = props => {
+    console.log(props)
     const classes = useStyles();
     return (
         <List
