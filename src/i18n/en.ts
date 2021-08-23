@@ -199,6 +199,14 @@ const customEnglishMessages: TranslationMessages = {
         blog: {
             name: 'Blog |||| Blog',
         },
+        prices:{
+            name: 'Price |||| Prices',
+            types:{
+                full: 'FullBoard',
+                half: 'HalfBoard',
+                without: 'WithoutBoard'
+            }
+        },
         segments: {
             name: 'Segment |||| Segments',
             fields: {

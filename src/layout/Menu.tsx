@@ -19,6 +19,7 @@ import reviews from '../reviews';
 import blog from '../blog';
 import SubMenu from './SubMenu';
 import { AppState } from '../types';
+import prices from '../prices';
 
 type MenuName = 'menuCatalog' | 'menuSales' | 'menuCustomers';
 
@@ -125,6 +126,14 @@ const Menu = ({ dense = false }: MenuProps) => {
                     smart_count: 2,
                 })}
                 leftIcon={<blog.icon />}
+                dense={dense}
+            />
+            <MenuItemLink
+                to={`/prices`}
+                primaryText={translate(`resources.prices.name`, {
+                    smart_count: 2,
+                })}
+                leftIcon={<prices.icon />}
                 dense={dense}
             />
         </div>

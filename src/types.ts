@@ -70,6 +70,14 @@ export interface LoginLocation {
     nextPathname: string;
 }
 
+export type PricesTypes = 1 | 2 | 3;
+
+export interface Price extends Record {
+    id: string;
+    type: PricesTypes;
+    amount: number;
+}
+
 declare global {
     interface Window {
         restServer: any;

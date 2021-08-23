@@ -16,6 +16,7 @@ import invoices from './invoices';
 import categories from './categories';
 import reviews from './reviews';
 import blog from './blog';
+import prices from './prices';
 import dataProvider from './dataProvider';
 
 const i18nProvider = polyglotI18nProvider(locale => {
@@ -52,6 +53,7 @@ const App = () => {
             <Resource name="categories" {...categories} />
             <Resource name="reviews" {...reviews} />
             <Resource name="blog" {...blog} />
+            <Resource name="prices" {...prices} />
         </Admin>
     );
 };
