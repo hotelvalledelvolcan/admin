@@ -21,7 +21,7 @@ jobs:
     - name: Build
       uses: actions/checkout@v2
     - name: Build
-      run: CI=false npm i && npm run build
+      run: npm i && CI=false npm run build
     - name: Deploy To GitHub Pages
       if: success()
       uses: crazy-max/ghaction-github-pages@v1.3.0
