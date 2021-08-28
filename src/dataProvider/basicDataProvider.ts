@@ -1,14 +1,14 @@
 import { fetchUtils, DataProvider } from "react-admin";
 import { stringify } from "query-string";
+import { baseUrl } from "../const";
 
 
 const httpClient = fetchUtils.fetchJson;
 
 class BasicDataProvider implements DataProvider {
-  apiUrl = "https://localhost:44316/api/v1/hotelvalledelvolcan-module";
 
   getApiUrl() {
-    return this.apiUrl;
+    return baseUrl;
   }
 
   getList(resource: string, params: any) {
@@ -19,7 +19,7 @@ class BasicDataProvider implements DataProvider {
       range: JSON.stringify([(page - 1) * perPage, page * perPage - 1]),
       filter: JSON.stringify(params.filter),
     };
-    const url = `${this.apiUrl}/${resource}?${stringify(query)}`;
+    const url = `${baseUrl}/${resource}?${stringify(query)}`;
 
     return httpClient(url).then(({ headers, json }) => ({
       data: json.result,
@@ -31,7 +31,7 @@ class BasicDataProvider implements DataProvider {
   }
 
   getOne(resource: string, params: any) {
-    return httpClient(`${this.apiUrl}/${resource}/${params.id}`).then(
+    return httpClient(`${baseUrl}/${resource}/${params.id}`).then(
       ({ json }) => ({
         data: json.result,
       })
@@ -42,7 +42,7 @@ class BasicDataProvider implements DataProvider {
     const query = {
       filter: JSON.stringify({ id: params.ids }),
     };
-    const url = `${this.apiUrl}/${resource}?${stringify(query)}`;
+    const url = `${baseUrl}/${resource}?${stringify(query)}`;
     return httpClient(url).then(({ json }) => ({ data: json.result }));
   }
 
@@ -57,7 +57,7 @@ class BasicDataProvider implements DataProvider {
         [params.target]: params.id,
       }),
     };
-    const url = `${this.apiUrl}/${resource}?${stringify(query)}`;
+    const url = `${baseUrl}/${resource}?${stringify(query)}`;
 
     return httpClient(url).then(({ headers, json }) => ({
       data: json.result,
@@ -69,7 +69,7 @@ class BasicDataProvider implements DataProvider {
   }
 
   update(resource: string, params: any) {
-    return httpClient(`${this.apiUrl}/${resource}/${params.id}`, {
+    return httpClient(`${baseUrl}/${resource}/${params.id}`, {
       method: "PUT",
       body: JSON.stringify(params.data),
     }).then(({ json }) => ({ data: json.result }));
@@ -79,14 +79,14 @@ class BasicDataProvider implements DataProvider {
     const query = {
       filter: JSON.stringify({ id: params.ids }),
     };
-    return httpClient(`${this.apiUrl}/${resource}?${stringify(query)}`, {
+    return httpClient(`${baseUrl}/${resource}?${stringify(query)}`, {
       method: "PUT",
       body: JSON.stringify(params.data),
     }).then(({ json }) => ({ data: json.result }));
   }
 
   create(resource: string, params: any) {
-    return httpClient(`${this.apiUrl}/${resource}`, {
+    return httpClient(`${baseUrl}/${resource}`, {
       method: "POST",
       body: JSON.stringify(params.data),
     }).then(({ json }) => ({
@@ -95,7 +95,7 @@ class BasicDataProvider implements DataProvider {
   }
 
   delete(resource: string, params: any) {
-    return httpClient(`${this.apiUrl}/${resource}/${params.id}`, {
+    return httpClient(`${baseUrl}/${resource}/${params.id}`, {
       method: "DELETE",
     }).then(({ json }) => ({ data: json }));
   }
@@ -104,7 +104,7 @@ class BasicDataProvider implements DataProvider {
     const query = {
       filter: JSON.stringify({ id: params.ids }),
     };
-    return httpClient(`${this.apiUrl}/${resource}?${stringify(query)}`, {
+    return httpClient(`${baseUrl}/${resource}?${stringify(query)}`, {
       method: "DELETE",
       body: JSON.stringify(params.data),
     }).then(({ json }) => ({ data: json }));
