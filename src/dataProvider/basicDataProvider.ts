@@ -2,24 +2,26 @@ import { fetchUtils, DataProvider } from "react-admin";
 import { stringify } from "query-string";
 import { baseUrl } from "../const";
 
-
 const httpClient = fetchUtils.fetchJson;
 
 class BasicDataProvider implements DataProvider {
-
   getApiUrl() {
     return baseUrl;
   }
 
   getList(resource: string, params: any) {
-    const { page, perPage } = params.pagination;
-    const { field, order } = params.sort;
-    const query = {
-      sort: JSON.stringify([field, order]),
-      range: JSON.stringify([(page - 1) * perPage, page * perPage - 1]),
-      filter: JSON.stringify(params.filter),
-    };
-    const url = `${baseUrl}/${resource}?${stringify(query)}`;
+    let url = `${baseUrl}/${resource}`;
+
+    if (params) {
+      const { page, perPage } = params.pagination;
+      const { field, order } = params.sort;
+      const query = {
+        sort: JSON.stringify([field, order]),
+        range: JSON.stringify([(page - 1) * perPage, page * perPage - 1]),
+        filter: JSON.stringify(params.filter),
+      };
+      url = `${url}?${stringify(query)}`;
+    }
 
     return httpClient(url).then(({ headers, json }) => ({
       data: json.result,

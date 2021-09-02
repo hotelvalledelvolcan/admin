@@ -1,9 +1,9 @@
 import BlogDataProvider from "../blog/blogDataProvider";
 import BasicDataProvider from "./basicDataProvider";
 import { DataProvider } from "react-admin";
+import SeasonDataProvider from "../season/seasonDataProvider";
 
 class CompositeDataProvider implements DataProvider {
-
   _delegate(name: string, resource: string, params: any) {
     let dataProvider: DataProvider;
 
@@ -11,7 +11,9 @@ class CompositeDataProvider implements DataProvider {
       case "blog":
         dataProvider = new BlogDataProvider();
         break;
-
+      case "season":
+        dataProvider = new SeasonDataProvider();
+        break;
       default:
         dataProvider = new BasicDataProvider();
         break;

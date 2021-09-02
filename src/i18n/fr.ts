@@ -222,6 +222,13 @@ const customFrenchMessages: TranslationMessages = {
                 without: 'WithoutBoard'
             }
         },
+        season:{
+            name: 'Season |||| Season',
+            fields:{
+                start: 'Start',
+                end: 'End'
+            }
+        },
         segments: {
             name: 'Segment |||| Segments',
             fields: {

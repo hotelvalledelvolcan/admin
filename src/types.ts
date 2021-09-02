@@ -78,6 +78,12 @@ export interface Price extends Record {
     amount: number;
 }
 
+export interface Season extends Record {
+    id: string;
+    start: Date;
+    end: Date;
+}
+
 declare global {
     interface Window {
         restServer: any;

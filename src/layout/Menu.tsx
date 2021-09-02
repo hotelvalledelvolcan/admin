@@ -1,46 +1,47 @@
-import * as React from 'react';
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
-import LabelIcon from '@material-ui/icons/Label';
-import { makeStyles } from '@material-ui/core/styles';
+import * as React from "react";
+import { useState } from "react";
+import { useSelector } from "react-redux";
+import LabelIcon from "@material-ui/icons/Label";
+import { makeStyles } from "@material-ui/core/styles";
 import {
-    useTranslate,
-    DashboardMenuItem,
-    MenuItemLink,
-    MenuProps,
-} from 'react-admin';
+  useTranslate,
+  DashboardMenuItem,
+  MenuItemLink,
+  MenuProps,
+} from "react-admin";
 
-import visitors from '../visitors';
-import orders from '../orders';
-import invoices from '../invoices';
-import products from '../products';
-import categories from '../categories';
-import reviews from '../reviews';
-import blog from '../blog';
-import SubMenu from './SubMenu';
-import { AppState } from '../types';
-import prices from '../prices';
+import visitors from "../visitors";
+import orders from "../orders";
+import invoices from "../invoices";
+import products from "../products";
+import categories from "../categories";
+import reviews from "../reviews";
+import blog from "../blog";
+import SubMenu from "./SubMenu";
+import { AppState } from "../types";
+import prices from "../prices";
+import season from "../season";
 
-type MenuName = 'menuCatalog' | 'menuSales' | 'menuCustomers';
+type MenuName = "menuCatalog" | "menuSales" | "menuCustomers";
 
 const Menu = ({ dense = false }: MenuProps) => {
-    const [state, setState] = useState({
-        menuCatalog: true,
-        menuSales: true,
-        menuCustomers: true,
-    });
-    const translate = useTranslate();
-    useSelector((state: AppState) => state.theme); // force rerender on theme change
-    const classes = useStyles();
+  const [state, setState] = useState({
+    menuCatalog: true,
+    menuSales: true,
+    menuCustomers: true,
+  });
+  const translate = useTranslate();
+  useSelector((state: AppState) => state.theme); // force rerender on theme change
+  const classes = useStyles();
 
-    const handleToggle = (menu: MenuName) => {
-        setState(state => ({ ...state, [menu]: !state[menu] }));
-    };
+  const handleToggle = (menu: MenuName) => {
+    setState((state) => ({ ...state, [menu]: !state[menu] }));
+  };
 
-    return (
-        <div className={classes.root}>
-            {/* <DashboardMenuItem /> */}
-            {/* <SubMenu
+  return (
+    <div className={classes.root}>
+      {/* <DashboardMenuItem /> */}
+      {/* <SubMenu
                 handleToggle={() => handleToggle('menuSales')}
                 isOpen={state.menuSales}
                 name="pos.menu.sales"
@@ -120,30 +121,39 @@ const Menu = ({ dense = false }: MenuProps) => {
                 leftIcon={<reviews.icon />}
                 dense={dense}
             /> */}
-            <MenuItemLink
-                to={`/blog`}
-                primaryText={translate(`resources.blog.name`, {
-                    smart_count: 2,
-                })}
-                leftIcon={<blog.icon />}
-                dense={dense}
-            />
-            <MenuItemLink
-                to={`/prices`}
-                primaryText={translate(`resources.prices.name`, {
-                    smart_count: 2,
-                })}
-                leftIcon={<prices.icon />}
-                dense={dense}
-            />
-        </div>
-    );
+      <MenuItemLink
+        to={`/blog`}
+        primaryText={translate(`resources.blog.name`, {
+          smart_count: 2,
+        })}
+        leftIcon={<blog.icon />}
+        dense={dense}
+      />
+      <MenuItemLink
+        to={`/prices`}
+        primaryText={translate(`resources.prices.name`, {
+          smart_count: 2,
+        })}
+        leftIcon={<prices.icon />}
+        dense={dense}
+      />
+
+      <MenuItemLink
+        to={`/season`}
+        primaryText={translate(`resources.season.name`, {
+          smart_count: 2,
+        })}
+        leftIcon={<season.icon />}
+        dense={dense}
+      />
+    </div>
+  );
 };
 
-const useStyles = makeStyles(theme => ({
-    root: {
-        marginTop: theme.spacing(1),
-    },
+const useStyles = makeStyles((theme) => ({
+  root: {
+    marginTop: theme.spacing(1),
+  },
 }));
 
 export default Menu;
